@@ -25,19 +25,29 @@
       $(() => {
         $("#gridContainer").dxDataGrid({
           dataSource: "http://localhost:8090",
-          showColumnLines: false,
+          showColumnLines: true,
           showRowLines: true,
           rowAlternationEnabled: true,
+          hoverStateEnabled: true,
+          allowColumnResizing: true,
+          columnResizingMode: 'nextColumn',
+          columnMinWidth: 50,
+          columnChooser: {
+            enabled: true,
+          },
+          columnFixing: {
+            enabled: true,
+          },
           filterRow: {
             visible: true,
             applyFilter: "auto",
           },
           paging: {
-            pageSize: 25,
+            pageSize: 20,
           },
           pager: {
             showPageSizeSelector: true,
-            allowedPageSizes: [25, 50, 100],
+            allowedPageSizes: [20, 40, 60, 80, 100],
           },
           searchPanel: {
             visible: true,

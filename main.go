@@ -30,11 +30,16 @@ func main() {
 	}
 
 	app.Router.HandleFunc("/", app.list).Methods("GET")
-	app.Router.HandleFunc("/log", app.log).Methods("POST")
 	app.Router.HandleFunc("/health", app.health).Methods("GET")
+	app.Router.HandleFunc("/home", app.html).Methods("GET")
+	app.Router.HandleFunc("/log", app.log).Methods("POST")
 
 	fmt.Println("Server is running on port 8090")
 	http.ListenAndServe(":8090", app.Router)
+}
+
+func (a *App) html(w http.ResponseWriter, r *http.Request) {
+	http.ServeFile(w, r, "index.html")
 }
 
 func (a *App) list(w http.ResponseWriter, req *http.Request) {
