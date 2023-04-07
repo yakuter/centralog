@@ -5,7 +5,7 @@ import (
 )
 
 type Entry struct {
-	ID           uint      `gorm:"primarykey"`
+	ID           uint      `json:"id" gorm:"primarykey"`
 	Project      string    `json:"project"`
 	Hostname     string    `json:"hostname"`
 	OS           string    `json:"os"`

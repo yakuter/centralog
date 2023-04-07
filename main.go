@@ -38,6 +38,7 @@ func main() {
 }
 
 func (a *App) list(w http.ResponseWriter, req *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	entries, err := database.List(a.DB)
 	if err != nil {
 		fmt.Println("Error: ", err.Error())

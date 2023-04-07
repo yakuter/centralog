@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Centralog</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      window.jQuery ||
+        document.write(
+          decodeURIComponent('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E')
+        );
+    </script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn3.devexpress.com/jslib/22.2.5/css/dx.light.css"
+    />
+    <script src="https://cdn3.devexpress.com/jslib/22.2.5/js/dx.all.js"></script>
+    <script>
+      $(() => {
+        $("#gridContainer").dxDataGrid({
+          dataSource: "http://localhost:8090",
+          showColumnLines: false,
+          showRowLines: true,
+          rowAlternationEnabled: true,
+          filterRow: {
+            visible: true,
+            applyFilter: "auto",
+          },
+          paging: {
+            pageSize: 25,
+          },
+          pager: {
+            showPageSizeSelector: true,
+            allowedPageSizes: [25, 50, 100],
+          },
+          searchPanel: {
+            visible: true,
+            width: 240,
+            placeholder: "Search...",
+          },
+          headerFilter: {
+            visible: true,
+          },
+          columns: [
+            {
+              dataField: 'id',
+              width: 50,
+            },
+            {
+              dataField: 'project',
+              width: 100,
+            },
+            {
+              dataField: 'hostname',
+              width: 150,
+            },
+            {
+              dataField: 'os',
+              width: 100,
+            },
+            {
+              dataField: 'platform',
+              width: 100,
+            },
+            {
+              dataField: 'architecture',
+              caption: 'Arch',
+              width: 80,
+            },
+            {
+              dataField: 'pipeline_name',
+              width: 200,
+            },
+            {
+              dataField: 'pipeline_id',
+              width: 100,
+            },
+            {
+              dataField: 'level',
+              width: 80,
+            },
+            'message',
+            {
+              dataField: 'timestamp',
+              width: 260,
+            },
+          ],
+          showBorders: true,
+        });
+      });
+    </script>
+  </head>
+
+  <body class="dx-viewport">
+    <h1 style="display: block; color: royalblue; margin: 20px 10px 0px 30px">
+      Centralog
+    </h1>
+    <div class="dg-container" style="margin: 0px 30px 10px 30px">
+      <div id="gridContainer"></div>
+    </div>
+  </body>
+</html>
